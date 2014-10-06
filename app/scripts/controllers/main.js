@@ -10,7 +10,7 @@
 angular.module('sibasApp')
   .controller('MainCtrl', function($http, $scope) {
 
-    $http.get('/data/data.wiki.json').success(function(data) {
+    $http.get('data/data.wiki.json').success(function(data) {
       $scope.data = data;
 
       $scope.types =  _.uniq(_.map(data, function(item) {
