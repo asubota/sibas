@@ -28,19 +28,23 @@
 
       <div ng-controller="MainCtrl">
         <form class="form-inline" role="form">
-          <div class="form-group" ng-hide="!type">
+          <div class="form-group pull-left" ng-hide="!type">
             <input class="form-control" type="text" placeholder="Start typing..." ng-model="customText.name">
           </div>
 
           <div class="form-group pull-right">
-            Type&nbsp;<select data-style="btn-info" class="selectpicker" ng-options="type as type for type in types" ng-model="type" ng-change="byType()">
-            <option></option>
-        </select>
+            Type&nbsp;
+            <select data-style="btn-info"
+                    class="selectpicker"
+                    ng-options="type as type for type in types"
+                    ng-model="type"
+                    ng-change="byType()">
+              <option></option>
+            </select>
           </div>
+           <div class="clearfix"></div>
         </form>
 
-        <br>
-        <br>
         <table class="table table-striped" ng-hide="!type">
           <thead>
             <tr>
