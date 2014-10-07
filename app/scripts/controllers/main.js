@@ -8,14 +8,16 @@
  * Controller of the sibasApp
  */
 angular.module('sibasApp')
-  .controller('MainCtrl', function($http, $scope) {
+  .controller('MainCtrl', function($scope, Data, bsui) {
 
-    $http.get('data/data.wiki.json').success(function(data) {
+    Data.then(function(data) {
       $scope.data = data;
 
       $scope.types =  _.uniq(_.map(data, function(item) {
         return item.type;
       })).sort();
+
+      bsui.updatePicker();
     });
 
     $scope.byType = function() {

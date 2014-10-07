@@ -27,22 +27,30 @@
       </div>
 
       <div ng-controller="MainCtrl">
-        <form class="form-inline" role="form">
-          <div class="form-group pull-left" ng-hide="!type">
-            <input class="form-control" type="text" placeholder="Start typing..." ng-model="customText.name">
-          </div>
+        <form class="form" role="form">
 
-          <div class="form-group pull-right">
-            Type&nbsp;
-            <select data-style="btn-info"
-                    class="selectpicker"
-                    ng-options="type as type for type in types"
-                    ng-model="type"
-                    ng-change="byType()">
-              <option></option>
-            </select>
+          <div class="row">
+            <div class="col-xs-8">
+
+              <div class="form-group" ng-hide="!type">
+                <input class="form-control" type="text" placeholder="Start typing..." ng-model="customText.name">
+              </div>
+
+            </div>
+            <div class="col-xs-4">
+
+              <div class="form-group" ng-hide="!types">
+                <select data-style="btn-info"
+                        class="bs-select selectpicker"
+                        ng-options="type as type for type in types"
+                        ng-model="type"
+                        ng-change="byType()">
+                  <option></option>
+                </select>
+              </div>
+
+            </div>
           </div>
-           <div class="clearfix"></div>
         </form>
 
         <table class="table table-striped" ng-hide="!type">
@@ -105,6 +113,8 @@
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/services/data.js"></script>
+        <script src="scripts/services/bsui.js"></script>
         <!-- endbuild -->
 </body>
 </html>
