@@ -14,15 +14,26 @@ angular.module('sibasApp')
 
 
     $rootScope.$on('$locationChangeSuccess', function(){
-      var search = $location.search().search;
+      var search = $location.search().search,
+        type = $location.search().type;
+
       if (search) {
         $scope.customText = search;
+      }
+      if (type) {
+        $scope.type = type;
       }
     });
 
     $scope.$watch('customText', function(n, o) {
       if (n !== o) {
         $location.search('search', n);
+      }
+    });
+
+    $scope.$watch('type', function(n, o) {
+      if (n !== o) {
+        $location.search('type', n);
       }
     });
 
