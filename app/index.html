@@ -32,7 +32,7 @@
           <div class="row">
             <div class="col-xs-8">
 
-              <div class="form-group" ng-hide="!type">
+              <div class="form-group">
                 <input class="form-control" type="text" placeholder="Start typing..." ng-model="customText.name">
               </div>
 
@@ -53,21 +53,25 @@
           </div>
         </form>
 
-        <table class="table table-striped" ng-hide="!type">
+        <table class="table table-striped">
           <thead>
             <tr>
               <th><span class="badge">{{filtered.length}}</span></th>
-              <th>Name</th>
-              <th>Prev. Name</th>
-              <th>District</th>
-              <th>Area</th>
+              <th><a class="sortlink" href="" ng-click="sortField='name'; reverse=!reverse;">Name</a></th>
+              <th><a class="sortlink" href="" ng-click="sortField='name_ru'; reverse=!reverse;">Name Ru</a></th>
+              <th><a class="sortlink" href="" ng-click="sortField='prev_name'; reverse=!reverse;">Prev. Name</a></th>
+              <th><a class="sortlink" href="" ng-click="sortField='district'; reverse=!reverse;">Coordinates</a></th>
+              <th><a class="sortlink" href="" ng-click="sortField='district'; reverse=!reverse;">District</a></th>
+              <th><a class="sortlink" href="" ng-click="sortField='area'; reverse=!reverse;">Area</a></th>
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="item in filtered | filter:customText ">
+            <tr ng-repeat="item in filtered | filter:customText | orderBy:sortField:reverse | limitTo:40">
               <td>{{item.type}}</td>
               <td>{{item.name}}</td>
+              <td>{{item.name_ru}}</td>
               <td>{{item.prev_name}}</td>
+              <td><a target="_blank" ng-href="https://www.google.com.ua/maps/preview?q={{item.coordinates.join('+')}}">{{item.coordinates.join(' ')}}</a></td>
               <td>{{item.district}}</td>
               <td>{{item.area}}</td>
             </tr>

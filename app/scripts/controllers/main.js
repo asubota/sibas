@@ -10,8 +10,12 @@
 angular.module('sibasApp')
   .controller('MainCtrl', function($scope, Data, bsui) {
 
+    $scope.reverse = true;
+    $scope.sortField = 'name';
+
     Data.then(function(data) {
       $scope.data = data;
+      $scope.filtered = data;
 
       $scope.types =  _.uniq(_.map(data, function(item) {
         return item.type;
@@ -21,7 +25,7 @@ angular.module('sibasApp')
     });
 
     $scope.byType = function() {
-      $scope.filtered = _.filter($scope.data, function(item) {
+      $scope.filtered = !$scope.type ? $scope.data : _.filter($scope.data, function(item) {
         return item.type === $scope.type;
       });
     };

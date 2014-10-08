@@ -11,7 +11,7 @@ angular.module('sibasApp')
   .factory('Data', function($http, $q) {
     var deferred = $q.defer();
 
-    $http.get('data/data.wiki.json').success(function(data) {
+    $http.get('data/data.wiki.ru.json').success(function(data) {
       deferred.resolve(data);
     });
 
