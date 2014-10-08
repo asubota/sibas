@@ -33,7 +33,7 @@
             <div class="col-xs-8">
 
               <div class="form-group">
-                <input class="form-control" type="text" placeholder="Start typing..." ng-model="customText.name">
+                <input class="form-control" type="text" placeholder="Start typing..." ng-model="customText">
               </div>
 
             </div>
@@ -60,7 +60,6 @@
               <th><a class="sortlink" href="" ng-click="sortField='name'; reverse=!reverse;">Name</a></th>
               <th><a class="sortlink" href="" ng-click="sortField='name_ru'; reverse=!reverse;">Name Ru</a></th>
               <th><a class="sortlink" href="" ng-click="sortField='prev_name'; reverse=!reverse;">Prev. Name</a></th>
-              <th><a class="sortlink" href="" ng-click="sortField='district'; reverse=!reverse;">Coordinates</a></th>
               <th><a class="sortlink" href="" ng-click="sortField='district'; reverse=!reverse;">District</a></th>
               <th><a class="sortlink" href="" ng-click="sortField='area'; reverse=!reverse;">Area</a></th>
             </tr>
@@ -68,10 +67,9 @@
           <tbody>
             <tr ng-repeat="item in filtered | filter:customText | orderBy:sortField:reverse | limitTo:40">
               <td>{{item.type}}</td>
-              <td>{{item.name}}</td>
+              <td><a target="_blank" ng-href="https://www.google.com.ua/maps/preview?q={{item.coordinates.join('+')}}">{{item.name}}</a></td>
               <td>{{item.name_ru}}</td>
               <td>{{item.prev_name}}</td>
-              <td><a target="_blank" ng-href="https://www.google.com.ua/maps/preview?q={{item.coordinates.join('+')}}">{{item.coordinates.join(' ')}}</a></td>
               <td>{{item.district}}</td>
               <td>{{item.area}}</td>
             </tr>

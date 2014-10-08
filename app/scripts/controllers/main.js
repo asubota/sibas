@@ -8,10 +8,23 @@
  * Controller of the sibasApp
  */
 angular.module('sibasApp')
-  .controller('MainCtrl', function($scope, Data, bsui) {
-
+  .controller('MainCtrl', function($scope, Data, bsui, $location, $rootScope) {
     $scope.reverse = true;
     $scope.sortField = 'name';
+
+
+    $rootScope.$on('$locationChangeSuccess', function(){
+      var search = $location.search().search;
+      if (search) {
+        $scope.customText = search;
+      }
+    });
+
+    $scope.$watch('customText', function(n, o) {
+      if (n !== o) {
+        $location.search('search', n);
+      }
+    });
 
     Data.then(function(data) {
       $scope.data = data;
