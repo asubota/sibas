@@ -9,21 +9,11 @@
  */
 angular.module('sibasApp')
   .controller('MainCtrl', function($scope, Data, bsui, $location, $rootScope) {
+
     $scope.reverse = true;
     $scope.sortField = 'name';
-
-
-    $rootScope.$on('$locationChangeSuccess', function(){
-      var search = $location.search().search,
-        type = $location.search().type;
-
-      if (search) {
-        $scope.customText = search;
-      }
-      if (type) {
-        $scope.type = type;
-      }
-    });
+    $scope.filtered = [];
+    $scope.data = [];
 
     $scope.$watch('customText', function(n, o) {
       if (n !== o) {
@@ -46,6 +36,7 @@ angular.module('sibasApp')
       })).sort();
 
       bsui.updatePicker();
+      $scope.byType();
     });
 
     $scope.byType = function() {
@@ -53,4 +44,18 @@ angular.module('sibasApp')
         return item.type === $scope.type;
       });
     };
+
+    $rootScope.$on('$locationChangeSuccess', function(){
+      var search = $location.search().search,
+        type = $location.search().type;
+
+      if (search) {
+        $scope.customText = search;
+      }
+
+      if (type) {
+        $scope.type = type;
+      }
+    });
+
   });

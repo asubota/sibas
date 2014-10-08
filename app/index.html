@@ -28,17 +28,13 @@
 
       <div ng-controller="MainCtrl">
         <form class="form" role="form">
-
           <div class="row">
             <div class="col-xs-8">
-
               <div class="form-group">
                 <input class="form-control" type="text" placeholder="Start typing..." ng-model="customText">
               </div>
-
             </div>
             <div class="col-xs-4">
-
               <div class="form-group" ng-hide="!types">
                 <select data-style="btn-info"
                         class="bs-select selectpicker"
@@ -48,7 +44,6 @@
                   <option></option>
                 </select>
               </div>
-
             </div>
           </div>
         </form>
@@ -65,7 +60,7 @@
             </tr>
           </thead>
           <tbody>
-            <tr ng-repeat="item in filtered | filter:customText | orderBy:sortField:reverse | limitTo:40">
+            <tr ng-repeat="item in filtered | regexFilter:customText | orderBy:sortField:reverse | limitTo:40">
               <td>{{item.type}}</td>
               <td><a target="_blank" ng-href="https://www.google.com.ua/maps/preview?q={{item.coordinates.join('+')}}">{{item.name}}</a></td>
               <td>{{item.name_ru}}</td>
@@ -78,7 +73,7 @@
       </div>
 
       <div class="footer">
-        <p><span style="color: #d43f3a;"class="glyphicon glyphicon-heart "></span> for the <strong>Sibas!</strong> team</p>
+        <p><span class="glyphicon glyphicon-heart sibas-red"></span> for the <strong>Sibas!</strong> team</p>
       </div>
     </div>
 
@@ -117,6 +112,7 @@
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/services/data.js"></script>
         <script src="scripts/services/bsui.js"></script>
+        <script src="scripts/filters/regexfilter.js"></script>
         <!-- endbuild -->
 </body>
 </html>
