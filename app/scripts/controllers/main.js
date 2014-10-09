@@ -52,7 +52,6 @@ angular.module('sibasApp')
       if (search) {
         $scope.customText = search;
       }
-
       if (type) {
         $scope.type = type;
       }

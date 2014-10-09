@@ -10,8 +10,16 @@
  */
 angular.module('sibasApp')
   .filter('regexFilter', function() {
+    var data = function(item, term) {
+      var regex = new RegExp(term.replace(/\*/g, '.+').replace(/\?/g, '.'), 'g');
+
+      return function(field) {
+        return !!item[field] ? regex.test(item[field].toLowerCase()) : false;
+      };
+    };
+
     return function(dataArray, searchTerm) {
-      var term, regex;
+      var term;
 
       if (!dataArray) {
         return;
@@ -19,21 +27,15 @@ angular.module('sibasApp')
 
       if( !searchTerm ){
         return dataArray;
-      } else {
-        term = searchTerm.toLowerCase();
-        regex = new RegExp(['.*', term.replace(/\*/g, '.'), '.*'].join(''), 'g');
       }
 
+      term = searchTerm.toLowerCase();
       return dataArray.filter(function(item) {
-        var name, coordinates, ru;
-
-        ru = _.first(_.values(_.pick(item, 'name_ru')));
-        ru = ru ? regex.test(ru.toLowerCase()) : false;
+        var coordinates, test = data(item, term);
 
         coordinates = item.coordinates ? item.coordinates.join().indexOf(term) > -1 : false;
-        name = regex.test(item.name.toLowerCase());
 
-        return name || coordinates || ru;
+        return test('name_ru') || test('name') || coordinates;
       });
     };
   });
