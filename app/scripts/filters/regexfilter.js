@@ -11,7 +11,7 @@
 angular.module('sibasApp')
   .filter('regexFilter', function() {
     var data = function(item, term) {
-      var regex = new RegExp(term.replace(/\*/g, '.+').replace(/\?/g, '.'), 'g');
+      var regex = new RegExp('^' + term.replace(/\*/g, '.+').replace(/\?/g, '.'), 'g');
 
       return function(field) {
         return !!item[field] ? regex.test(item[field].toLowerCase()) : false;
