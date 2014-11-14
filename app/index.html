@@ -23,54 +23,10 @@
     <!-- Add your site or application content here -->
     <div class="container">
       <div class="header">
-        <h3 class="text-muted">Sibas!</h3>
+        <h3 class="text-muted"><a ng-href='/'>Sibas!</a></h3>
       </div>
 
-      <div ng-controller="MainCtrl">
-        <form class="form" role="form">
-          <div class="row">
-            <div class="col-xs-8">
-              <div class="form-group">
-                <input class="form-control" type="text" placeholder="Start typing..." ng-model="customText">
-              </div>
-            </div>
-            <div class="col-xs-4">
-              <div class="form-group" ng-hide="!types">
-                <select data-style="btn-info"
-                        class="bs-select selectpicker"
-                        ng-options="type as type for type in types"
-                        ng-model="type"
-                        ng-change="byType()">
-                  <option></option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </form>
-
-        <table class="table table-striped">
-          <thead>
-            <tr>
-              <th><span class="badge">{{filtered.length}}</span></th>
-              <th><a class="sortlink" href="" ng-click="sortField='name'; reverse=!reverse;">Name</a></th>
-              <th><a class="sortlink" href="" ng-click="sortField='name_ru'; reverse=!reverse;">Name Ru</a></th>
-              <th><a class="sortlink" href="" ng-click="sortField='prev_name'; reverse=!reverse;">Prev. Name</a></th>
-              <th><a class="sortlink" href="" ng-click="sortField='district'; reverse=!reverse;">District</a></th>
-              <th><a class="sortlink" href="" ng-click="sortField='area'; reverse=!reverse;">Area</a></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr ng-repeat="item in filtered | regexFilter:customText | orderBy:sortField:reverse | limitTo:40">
-              <td>{{item.type}}</td>
-              <td><a target="_blank" ng-href="https://www.google.com.ua/maps/preview?q={{item.coordinates.join('+')}}">{{item.name}}</a></td>
-              <td>{{item.name_ru}}</td>
-              <td>{{item.prev_name}}</td>
-              <td>{{item.district}}</td>
-              <td>{{item.area}}</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <div ng-view></div>
 
       <div class="footer">
         <p><span class="glyphicon glyphicon-heart sibas-red"></span> for the <strong>Sibas!</strong> team</p>
@@ -104,15 +60,19 @@
     <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/bootstrap-select/dist/js/bootstrap-select.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
-        <script src="scripts/services/data.js"></script>
         <script src="scripts/services/bsui.js"></script>
         <script src="scripts/filters/regexfilter.js"></script>
+        <script src="scripts/controllers/admin.js"></script>
+        <script src="scripts/services/addresses.js"></script>
+        <script src="scripts/controllers/adminedit.js"></script>
         <!-- endbuild -->
 </body>
 </html>

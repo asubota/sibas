@@ -9,4 +9,26 @@
  * Main module of the application.
  */
 angular
-  .module('sibasApp', ['ui.bootstrap']);
+  .module('sibasApp', [
+    'ui.bootstrap',
+    'ngResource',
+    'ngRoute'
+  ])
+  .config(['$routeProvider', function ($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl'
+      })
+      .when('/atata', {
+        templateUrl: 'views/admin.html',
+        controller: 'AdminCtrl'
+      })
+      .when('/atata/:id', {
+        templateUrl: 'views/admin-edit.html',
+        controller: 'AdminEditCtrl'
+      })
+      .otherwise({
+        redirectTo: '/'
+      });
+  }]);

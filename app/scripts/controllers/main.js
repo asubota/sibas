@@ -8,27 +8,29 @@
  * Controller of the sibasApp
  */
 angular.module('sibasApp')
-  .controller('MainCtrl', function($scope, Data, bsui, $location, $rootScope) {
+  .controller('MainCtrl', function($scope, Addresses, bsui, $location, $rootScope) {
 
     $scope.reverse = true;
     $scope.sortField = 'name';
     $scope.filtered = [];
-    $scope.data = [];
 
     $scope.$watch('customText', function(n, o) {
       if (n !== o) {
-        $location.search('search', n);
+        // temp disable, leads to page refresh
+        // $location.search('search', n);
       }
     });
 
     $scope.$watch('type', function(n, o) {
       if (n !== o) {
-        $location.search('type', n);
+        // temp disable, leads to page refresh
+        // $location.search('type', n);
       }
     });
 
-    Data.then(function(data) {
-      $scope.data = data;
+    $scope.data = Addresses.query();
+
+    $scope.data.$promise.then(function(data) {
       $scope.filtered = data;
 
       $scope.types =  _.uniq(_.map(data, function(item) {
