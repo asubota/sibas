@@ -1,0 +1,32 @@
+
+<form class="form" role="form">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="form-group">
+        <input class="form-control" type="text" placeholder="Start typing..." ng-model="customText">
+      </div>
+    </div>
+  </div>
+</form>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><span class="badge">{{data.length}}</span></th>
+      <th><a class="sortlink" href="" ng-click="sortField='name'; reverse=!reverse;">Name</a></th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="item in data | regexFilter:customText | orderBy:sortField:reverse | limitTo:40">
+      <td colspan="2">{{item.name}}</td>
+
+      <td>
+        <div class="btn-group btn-group-sm">
+          <a class="btn btn-default btn-info" ng-href="#/atata/{{item.id}}"><span class="glyphicon glyphicon-edit"></span></a>
+          <a class="btn btn-default btn-danger" ng-click="remove(item)"><span class="glyphicon glyphicon-remove"></span></a>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
