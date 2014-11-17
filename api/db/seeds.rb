@@ -21,7 +21,7 @@ load_json(file).each do |a|
   end
 
   lng = if a['coordinates']
-    a['coordinates'][0]
+    a['coordinates'][1]
   else
     nil
   end

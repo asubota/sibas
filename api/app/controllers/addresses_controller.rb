@@ -51,6 +51,6 @@ class AddressesController < ApplicationController
   private
 
     def address_params
-      params[:address]
+      params.permit :name, :type, :prev_name, :district, :name_ru, :active, :lat, :lng, :area
     end
 end
