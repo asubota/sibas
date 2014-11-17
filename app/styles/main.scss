@@ -69,3 +69,15 @@ body {
 .sibas-red {
   color: #d43f3a;
 }
+
+.sibas-streets {
+  min-height: 250px;
+}
+
+div[ng-view].ng-enter {
+  animation: fadeInRight 0.5s;
+}
+
+.sibas-moar {
+
+}

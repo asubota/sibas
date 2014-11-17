@@ -2,7 +2,7 @@
 <form class="form" role="form">
   <div class="row">
     <div class="col-xs-4">
-      <a ng-hide="!district" ng-click="get()" class="btn btn-success">Moar!!1</a>
+      <a ng-hide="!district" ng-click="get()" class="btn btn-success sibas-moar">Moar!!1</a>
     </div>
 
     <div class="col-xs-4">
@@ -10,8 +10,7 @@
         <select data-style="btn-info"
                 class="bs-select selectpicker"
                 ng-options="district as district for district in districts"
-                ng-model="district"
-                ng-change="get()">
+                ng-model="district">
           <option></option>
         </select>
       </div>
@@ -19,8 +18,8 @@
   </div>
 </form>
 
-<div class="well">
-  <ol>
+<div class="well sibas-streets">
+  <ol class="">
     <li ng-repeat="item in data">{{item.type}} {{item.name}}</li>
   </ol>
 </div>

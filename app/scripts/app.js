@@ -12,7 +12,8 @@ angular
   .module('sibasApp', [
     'ui.bootstrap',
     'ngResource',
-    'ngRoute'
+    'ngRoute',
+    'ngAnimate'
   ])
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
