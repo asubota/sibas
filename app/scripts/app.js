@@ -20,6 +20,10 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
+      .when('/game', {
+        templateUrl: 'views/game.html',
+        controller: 'GameCtrl'
+      })
       .when('/atata', {
         templateUrl: 'views/admin.html',
         controller: 'AdminCtrl'

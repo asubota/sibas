@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   resources :addresses, except: [:new, :edit]
+
+  get 'api/game/:district/:count' => 'addresses#game'
+  get 'api/districts'             => 'addresses#districts'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -48,6 +48,18 @@ class AddressesController < ApplicationController
     head :no_content
   end
 
+  def game
+    @addresses = Address.select(:type, :name).order("Random()").where(district: params[:district]).limit params[:count] || 10
+
+    render json: @addresses
+  end
+
+  def districts
+    @data = Address.select(:district).uniq.pluck :district
+
+    render json: @data
+  end
+
   private
 
     def address_params
