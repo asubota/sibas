@@ -6,10 +6,11 @@
     </div>
 
     <div class="col-xs-4">
-      <div class="form-group" ng-hide="!districts">
+      <div class="form-group">
         <select data-style="btn-info"
                 class="bs-select selectpicker"
                 ng-options="district as district for district in districts"
+                ng-hide="!districts.length"
                 ng-model="district">
           <option></option>
         </select>
@@ -18,7 +19,7 @@
   </div>
 </form>
 
-<div class="well sibas-streets">
+<div class="well sibas-game" ng-class="{ 'sibas-empty': !data.length }">
   <ol class="">
     <li ng-repeat="item in data">{{item.type}} {{item.name}}</li>
   </ol>

@@ -32,7 +32,7 @@
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="item in filtered | regexFilter:customText | orderBy:sortField:reverse | limitTo:40">
+    <tr ng-repeat="item in filtered | regexFilter:customText | orderBy:sortField:reverse | limitTo:40" class="sibas-street">
       <td>{{item.type}}</td>
       <td><a target="_blank" ng-href="https://www.google.com.ua/maps/preview?q={{item.coordinates.join('+')}}">{{item.name}}</a></td>
       <td>{{item.name_ru}}</td>

@@ -70,14 +70,22 @@ body {
   color: #d43f3a;
 }
 
-.sibas-streets {
+.sibas-game {
   min-height: 250px;
+
+  &.sibas-empty-add-active {
+    animation: fadeOutUp .6s;
+  }
+
+  &.sibas-empty-remove-active {
+    animation: fadeInDown .6s;
+  }
 }
 
 div[ng-view].ng-enter {
-  animation: fadeInRight 0.5s;
+  animation: bounceInDown 1.0s;
 }
 
-.sibas-moar {
-
+.sibas-moar.ng-hide-remove {
+  animation: bounceIn 1.5s;
 }

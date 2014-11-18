@@ -8,7 +8,7 @@
  * Controller of the sibasApp
  */
 angular.module('sibasApp')
-  .controller('GameCtrl', function ($scope, Game, District, bsui) {
+  .controller('GameCtrl', function ($scope, Game, District, bsui, $timeout) {
 
     $scope.districts = District.query();
 
@@ -17,9 +17,15 @@ angular.module('sibasApp')
     });
 
     $scope.get = function() {
-      $scope.data = Game.query({
+      $scope.data = [];
+
+      Game.query({
         district: $scope.district,
         count: 10
+      }).$promise.then(function(data) {
+        $timeout(function() {
+          $scope.data = data;
+        }, 300);
       });
     };
 

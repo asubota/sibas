@@ -16,5 +16,4 @@ angular.module('sibasApp')
         picker.selectpicker('refresh');
       });
     };
-
   });
